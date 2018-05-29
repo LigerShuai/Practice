@@ -5,15 +5,15 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.liger.aidllib.IAddInterface;
 import com.liger.practice.R;
-import com.liger.server.IAddInterface;
+import com.liger.practice.base.BaseActivity;
 
-public class AIDLActivity extends AppCompatActivity implements View.OnClickListener {
+public class AIDLActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView mBindTv, mUnbindTv, mResultTv;
 

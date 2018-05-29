@@ -6,6 +6,8 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 
+import com.liger.aidllib.IAddInterface;
+
 /**
  * @author zs
  * @date 2018/5/28 0028.

@@ -1,5 +1,5 @@
 // IAddInterface.aidl
-package com.liger.server;
+package com.liger.aidllib;
 
 interface IAddInterface {
 
