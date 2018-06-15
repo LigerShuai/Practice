@@ -15,6 +15,20 @@
             android:text="AIDL"
             android:textAllCaps="false"/>
 
+        <Button
+            android:id="@+id/btn_dynamic_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dynamic"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btn_float_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="float"
+            android:textAllCaps="false"/>
+
     </LinearLayout>
 
 </ScrollView>

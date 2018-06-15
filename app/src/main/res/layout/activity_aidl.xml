@@ -1,52 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".aidlpractice.AIDLActivity">
 
-    <TextView
-        android:id="@+id/bind_tv"
+    <Button
+        android:id="@+id/bind_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_dark"
-        android:gravity="center"
-        android:text="绑定"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"/>
+        android:text="普通绑定"
+        android:textAllCaps="false"
+        android:textSize="24sp"/>
 
-    <TextView
-        android:id="@+id/unbind_tv"
+    <Button
+        android:id="@+id/bind_callback_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_dark"
-        android:gravity="center"
+        android:text="Callback绑定"
+        android:textAllCaps="false"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/unbind_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="解绑"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.085"/>
+        android:textAllCaps="false"
+        android:textSize="24sp"/>
 
     <TextView
         android:id="@+id/result_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.198"/>
+        android:textSize="20sp"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
