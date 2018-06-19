@@ -1,4 +1,4 @@
-package com.liger.practice.view;
+package com.liger.practice.adview;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
