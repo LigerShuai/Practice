@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.liger.practice.adview.AdViewActivity;
 import com.liger.practice.aidlpractice.AIDLActivity;
 import com.liger.practice.base.BaseActivity;
 import com.liger.practice.floatwindow.FloatWindowService;
@@ -23,6 +24,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_aidl).setOnClickListener(this);
         findViewById(R.id.btn_dynamic_view).setOnClickListener(this);
         findViewById(R.id.btn_float_view).setOnClickListener(this);
+        findViewById(R.id.btn_ad_view).setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +38,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.btn_float_view:
                 startService(new Intent(this, FloatWindowService.class));
+                break;
+            case R.id.btn_ad_view:
+                startActivity(new Intent(this, AdViewActivity.class));
                 break;
             default:
                 break;

@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.liger.practice.R;
@@ -30,7 +31,16 @@ public class AdViewAdapter extends RecyclerView.Adapter<AdViewAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mTextView.setText("");
+        holder.mTextView.setText(mList.get(position));
+        if (position > 0 && position % 10 == 0) {
+            holder.mTextView.setVisibility(View.INVISIBLE);
+            holder.mImageView.setVisibility(View.INVISIBLE);
+            holder.mAdImageView.setVisibility(View.VISIBLE);
+        } else {
+            holder.mTextView.setVisibility(View.VISIBLE);
+            holder.mImageView.setVisibility(View.VISIBLE);
+            holder.mAdImageView.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -41,10 +51,14 @@ public class AdViewAdapter extends RecyclerView.Adapter<AdViewAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView mTextView;
+        ImageView mImageView;
+        AdImageView mAdImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mTextView = itemView.findViewById(R.id.result_tv);
+            mTextView = itemView.findViewById(R.id.tv);
+            mAdImageView = itemView.findViewById(R.id.item_adview_adimg);
+            mImageView = itemView.findViewById(R.id.iv);
         }
     }
 }
