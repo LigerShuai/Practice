@@ -24,6 +24,7 @@
         <activity android:name=".aidlpractice.AIDLActivity"/>
         <activity android:name=".view.DynamicViewActivity"/>
         <activity android:name=".adview.AdViewActivity" />
+        <activity android:name=".annotation.AnnotationActivity"/>
 
         <service android:name=".floatwindow.FloatWindowService"/>
     </application>

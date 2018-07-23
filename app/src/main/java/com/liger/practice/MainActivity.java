@@ -3,12 +3,14 @@ package com.liger.practice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 
 import com.liger.practice.adview.AdViewActivity;
 import com.liger.practice.aidlpractice.AIDLActivity;
 import com.liger.practice.base.BaseActivity;
 import com.liger.practice.floatwindow.FloatWindowService;
+import com.liger.practice.util.AppUtil;
 import com.liger.practice.view.DynamicViewActivity;
 
 /**
@@ -20,11 +22,31 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("shuai", "onCreate: ");
         setContentView(R.layout.activity_main);
         findViewById(R.id.btn_aidl).setOnClickListener(this);
         findViewById(R.id.btn_dynamic_view).setOnClickListener(this);
         findViewById(R.id.btn_float_view).setOnClickListener(this);
         findViewById(R.id.btn_ad_view).setOnClickListener(this);
+        findViewById(R.id.btn_launch).setOnClickListener(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("shuai", "onResume: ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("shuai", "onPause: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("shuai", "onDestroy: ");
     }
 
     @Override
@@ -41,6 +63,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.btn_ad_view:
                 startActivity(new Intent(this, AdViewActivity.class));
+                break;
+            case R.id.btn_launch:
+                AppUtil.launchApp(this, "com.liger.server");
                 break;
             default:
                 break;

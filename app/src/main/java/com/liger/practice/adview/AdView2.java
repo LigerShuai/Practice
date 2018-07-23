@@ -15,7 +15,7 @@ import android.widget.ImageView;
  * @date 2018/6/19 0019.
  */
 @SuppressLint("AppCompatCustomView")
-public class AdView extends ImageView {
+public class AdView2 extends ImageView {
 
     private int itemHeight;
     /**
@@ -23,20 +23,20 @@ public class AdView extends ImageView {
      */
     private float rate = 1;
 
-    public AdView(Context context) {
+    public AdView2(Context context) {
         super(context);
     }
 
-    public AdView(Context context, @Nullable AttributeSet attrs) {
+    public AdView2(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public AdView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public AdView2(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public AdView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public AdView2(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 

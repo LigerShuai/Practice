@@ -32,8 +32,9 @@ public class AdViewActivity extends BaseActivity {
         mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         for (int i = 0; i < 100; i++) {
-            mList.add(i + " 当悦听进行后台播放返回桌面时，右上方显示缩略播放器模块模块显示应用名称专辑图片节目名称进度条。当悦聊—直播进行后台播放返回桌面时，右上方显示缩略播放器模块模块显示应用名称专辑图片节目名称进度条。" +
-                    "当悦听进行后台播放返回桌面时，右上方显示缩略播放器模块模块显示应用名称专辑图片节目名称进度条。当悦聊—直播进行后台播放返回桌面时，右上方显示缩略播放器模块模块显示应用名称专辑图片节目名称进度条。");
+            mList.add(i + " 腾讯科技讯 拥有数亿人口的东南亚，成为中国互联网公司争夺的另外一个舞台，许多有潜力的新创公司成为中国企业投资或并购的目标。" +
+                    "据外媒最新消息，阿里巴巴集团正准备收购印尼的一家互联网金融服务公司。据国外媒体引述多位知情人士的话说，阿里巴巴集团目前正在对印尼" +
+                    "金融产品交易平台 Cermati 展开收购，收购金额可能达到 3000 万美元。");
         }
         mAdapter = new AdViewAdapter(mList);
         mRecyclerView.setAdapter(mAdapter);

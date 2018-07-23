@@ -36,6 +36,18 @@
             android:text="adview"
             android:textAllCaps="false"/>
 
+        <Button
+            android:id="@+id/btn_launch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="启动第三方app"
+            android:textAllCaps="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/chinese"/>
+
     </LinearLayout>
 
 </ScrollView>

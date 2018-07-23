@@ -23,6 +23,8 @@ public class FloatWindowManager {
     private static WindowManager sWindowManager;
     private static WindowManager.LayoutParams mParams;
 
+    private static ActivityManager sActivityManager;
+
     /**
      * 悬浮窗
      */
@@ -70,10 +72,24 @@ public class FloatWindowManager {
         }
     }
 
+    /**
+     * 是否有悬浮窗显示在屏幕上
+     */
+    private static boolean isFloatShowing() {
+        return mFloatView != null;
+    }
+
     private static WindowManager getWindowManager(Context context) {
         if (sWindowManager == null) {
             sWindowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         }
         return sWindowManager;
+    }
+
+    private static ActivityManager getActivityManager(Context context) {
+        if (sActivityManager == null) {
+            sActivityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        }
+        return sActivityManager;
     }
 }
