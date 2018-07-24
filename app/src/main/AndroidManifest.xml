@@ -25,6 +25,7 @@
         <activity android:name=".view.DynamicViewActivity"/>
         <activity android:name=".adview.AdViewActivity" />
         <activity android:name=".annotation.AnnotationActivity"/>
+        <activity android:name=".greendao.DbActivity"/>
 
         <service android:name=".floatwindow.FloatWindowService"/>
     </application>

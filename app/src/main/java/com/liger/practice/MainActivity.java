@@ -10,6 +10,9 @@ import com.liger.practice.adview.AdViewActivity;
 import com.liger.practice.aidlpractice.AIDLActivity;
 import com.liger.practice.base.BaseActivity;
 import com.liger.practice.floatwindow.FloatWindowService;
+import com.liger.practice.greendao.DbActivity;
+import com.liger.practice.greendao.GreenDaoHelper;
+import com.liger.practice.greendao.User;
 import com.liger.practice.util.AppUtil;
 import com.liger.practice.view.DynamicViewActivity;
 
@@ -29,6 +32,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_float_view).setOnClickListener(this);
         findViewById(R.id.btn_ad_view).setOnClickListener(this);
         findViewById(R.id.btn_launch).setOnClickListener(this);
+        findViewById(R.id.btn_db).setOnClickListener(this);
+//        saveData();
     }
 
     @Override
@@ -67,8 +72,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.btn_launch:
                 AppUtil.launchApp(this, "com.liger.server");
                 break;
+            case R.id.btn_db:
+                startActivity(new Intent(this, DbActivity.class));
+                break;
             default:
                 break;
         }
+    }
+
+    private void saveData() {
+        User user1 = new User(1, 20, "Tom");
+        User user2 = new User(2, 25, "John");
+        User user3 = new User(3, 15, "Jack");
+        GreenDaoHelper.getInstance().save(user1);
+        GreenDaoHelper.getInstance().save(user2);
+        GreenDaoHelper.getInstance().save(user3);
+        Log.d("shuai", "saveData: " + user1.getName() + "\n" + user2.getName() + "\n" + user3.getName());
     }
 }

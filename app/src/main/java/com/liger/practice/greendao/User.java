@@ -12,7 +12,7 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class User {
 
-    @Id
+    @Id(autoincrement = true)
     private long id;
     private int age;
     private String name;

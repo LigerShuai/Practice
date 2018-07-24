@@ -10,43 +10,33 @@
 
         <Button
             android:id="@+id/btn_aidl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="AIDL"
-            android:textAllCaps="false"/>
+            style="@style/ButtonStyle"
+            android:text="AIDL"/>
 
         <Button
             android:id="@+id/btn_dynamic_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="dynamic"
-            android:textAllCaps="false"/>
+            style="@style/ButtonStyle"
+            android:text="dynamic"/>
 
         <Button
             android:id="@+id/btn_float_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="float"
-            android:textAllCaps="false"/>
+            style="@style/ButtonStyle"
+            android:text="float"/>
 
         <Button
             android:id="@+id/btn_ad_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="adview"
-            android:textAllCaps="false"/>
+            style="@style/ButtonStyle"
+            android:text="adview"/>
 
         <Button
             android:id="@+id/btn_launch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="启动第三方app"
-            android:textAllCaps="false"/>
+            style="@style/ButtonStyle"
+            android:text="启动第三方app"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/chinese"/>
+        <Button
+            android:id="@+id/btn_db"
+            style="@style/ButtonStyle"
+            android:text="DB"/>
 
     </LinearLayout>
 

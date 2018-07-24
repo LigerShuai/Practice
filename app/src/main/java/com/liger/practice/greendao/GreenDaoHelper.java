@@ -2,6 +2,7 @@ package com.liger.practice.greendao;
 
 import com.liger.practice.BaseApp;
 
+import org.greenrobot.greendao.query.Query;
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.List;
@@ -38,7 +39,7 @@ public class GreenDaoHelper {
         mUserDao = daoSession.getUserDao();
     }
 
-    public void insert(User user) {
+    public void save(User user) {
         mUserDao.insert(user);
     }
 
