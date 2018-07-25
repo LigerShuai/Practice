@@ -6,11 +6,12 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.liger.practice.adview.AdViewActivity;
 import com.liger.practice.aidlpractice.AIDLActivity;
 import com.liger.practice.base.BaseActivity;
+import com.liger.practice.constant.RouterConstant;
 import com.liger.practice.floatwindow.FloatWindowService;
-import com.liger.practice.greendao.DbActivity;
 import com.liger.practice.greendao.GreenDaoHelper;
 import com.liger.practice.greendao.User;
 import com.liger.practice.util.AppUtil;
@@ -27,13 +28,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         Log.d("shuai", "onCreate: ");
         setContentView(R.layout.activity_main);
+        ARouter.getInstance().inject(this);
+        initView();
+//        saveData();
+    }
+
+    private void initView() {
         findViewById(R.id.btn_aidl).setOnClickListener(this);
         findViewById(R.id.btn_dynamic_view).setOnClickListener(this);
         findViewById(R.id.btn_float_view).setOnClickListener(this);
         findViewById(R.id.btn_ad_view).setOnClickListener(this);
         findViewById(R.id.btn_launch).setOnClickListener(this);
         findViewById(R.id.btn_db).setOnClickListener(this);
-//        saveData();
     }
 
     @Override
@@ -52,6 +58,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onDestroy() {
         super.onDestroy();
         Log.d("shuai", "onDestroy: ");
+        ARouter.getInstance().destroy();
     }
 
     @Override
@@ -73,7 +80,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 AppUtil.launchApp(this, "com.liger.server");
                 break;
             case R.id.btn_db:
-                startActivity(new Intent(this, DbActivity.class));
+//                startActivity(new Intent(this, DbActivity.class));
+                ARouter.getInstance().build(RouterConstant.DB_ACTIVITY).navigation();
                 break;
             default:
                 break;

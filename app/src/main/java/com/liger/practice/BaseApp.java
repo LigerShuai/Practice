@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.liger.practice.greendao.DaoMaster;
 import com.liger.practice.greendao.DaoSession;
 
@@ -16,15 +17,9 @@ public class BaseApp extends Application {
     private static Context mContext;
     public static BaseApp mInstance;
 
-    private DaoSession mDaoSession;
+    private boolean isDebug = true;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        mContext = this;
-        mInstance = this;
-        initGreenDao();
-    }
+    private DaoSession mDaoSession;
 
     public static Context getContext() {
         return mContext;
@@ -33,6 +28,25 @@ public class BaseApp extends Application {
     public static BaseApp getInstance() {
         return mInstance;
     }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mContext = this;
+        mInstance = this;
+        initGreenDao();
+        initARouter();
+    }
+
+    private void initARouter() {
+        if (isDebug) {
+            ARouter.openLog();
+            //如果在InstantRun模式下运行，必须开启调试模式！
+            ARouter.openDebug();
+        }
+        ARouter.init(this);
+    }
+
 
     private void initGreenDao() {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "test2.db");
