@@ -10,29 +10,16 @@ import android.os.Looper;
  */
 public class TimerManager {
 
-    private Handler mMainHandler = new Handler(Looper.getMainLooper());
+    private static Handler mMainHandler = new Handler(Looper.getMainLooper());
 
-    private TimerManager() {
-
-    }
-
-    private static class TimerManagerHolder {
-        private static final TimerManager INSTANCE = new TimerManager();
-
-    }
-
-    public static TimerManager getInstance() {
-        return TimerManagerHolder.INSTANCE;
-    }
-
-    public void postToMainThreadDelayed(Runnable runnable, long delay) {
+    public static void postToMainThreadDelayed(Runnable runnable, long delay) {
         if (runnable == null) {
             return;
         }
         mMainHandler.postDelayed(runnable, delay);
     }
 
-    public void removeRunnableFromMainThread(Runnable runnable) {
+    public static void removeRunnableFromMainThread(Runnable runnable) {
         if (runnable == null) {
             return;
         }

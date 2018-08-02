@@ -19,14 +19,24 @@ public class TimerActivity extends BaseActivity {
     private TextView mTts;
     private TextView mDescription;
 
+    //播报耗时3秒
+    private static final int TTS_TIME = 3000;
+    private static final int WELCOME_TIME = 3000;
+    private static final int WELCOME_HIDE = 5000;
+    private static final int MUSIC_TIME = 3000;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
         initView();
 
-        showDescription("你好啊");
+        initTask();
+    }
 
+    private void initTask() {
+        //第一轮
+        showDescription("你好啊");
         showTts("你好啊", new OnTtsListener() {
             @Override
             public void begin() {
@@ -35,18 +45,48 @@ public class TimerActivity extends BaseActivity {
 
             @Override
             public void comleted() {
-                TimerManager.getInstance().postToMainThreadDelayed(new Runnable() {
+                TimerManager.postToMainThreadDelayed(new Runnable() {
                     @Override
                     public void run() {
                         hideTts();
-                        TimerManager.getInstance().postToMainThreadDelayed(new Runnable() {
+                        TimerManager.postToMainThreadDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 hideDescription();
+                                TimerManager.postToMainThreadDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        // 第二轮
+                                        showDescription("给你推荐了好听的歌曲");
+                                        showTts("给你推荐了好听的歌曲", new OnTtsListener() {
+                                            @Override
+                                            public void begin() {
+
+                                            }
+
+                                            @Override
+                                            public void comleted() {
+                                                TimerManager.postToMainThreadDelayed(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        hideTts();
+                                                        TimerManager.postToMainThreadDelayed(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                hideDescription();
+                                                            }
+                                                        }, MUSIC_TIME);
+                                                    }
+                                                }, TTS_TIME);
+                                            }
+                                        });
+                                    }
+                                }, WELCOME_HIDE);
+
                             }
-                        }, 3000);
+                        }, WELCOME_TIME);
                     }
-                }, 3000);
+                }, TTS_TIME);
             }
         });
     }
