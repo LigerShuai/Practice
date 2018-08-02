@@ -14,6 +14,7 @@ import com.liger.practice.constant.RouterConstant;
 import com.liger.practice.floatwindow.FloatWindowService;
 import com.liger.practice.greendao.GreenDaoHelper;
 import com.liger.practice.greendao.User;
+import com.liger.practice.timer.TimerActivity;
 import com.liger.practice.util.AppUtil;
 import com.liger.practice.view.DynamicViewActivity;
 
@@ -40,6 +41,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_ad_view).setOnClickListener(this);
         findViewById(R.id.btn_launch).setOnClickListener(this);
         findViewById(R.id.btn_db).setOnClickListener(this);
+        findViewById(R.id.btn_timer).setOnClickListener(this);
     }
 
     @Override
@@ -82,6 +84,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.btn_db:
 //                startActivity(new Intent(this, DbActivity.class));
                 ARouter.getInstance().build(RouterConstant.DB_ACTIVITY).navigation();
+                break;
+            case R.id.btn_timer:
+                ARouter.getInstance().build(RouterConstant.TIMER_ACTIVITY).navigation();
                 break;
             default:
                 break;

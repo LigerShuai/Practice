@@ -26,6 +26,7 @@
         <activity android:name=".adview.AdViewActivity" />
         <activity android:name=".annotation.AnnotationActivity"/>
         <activity android:name=".greendao.DbActivity"/>
+        <activity android:name=".timer.TimerActivity" />
 
         <service android:name=".floatwindow.FloatWindowService"/>
     </application>

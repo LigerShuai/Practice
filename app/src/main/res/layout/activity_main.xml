@@ -38,6 +38,11 @@
             style="@style/ButtonStyle"
             android:text="DB"/>
 
+        <Button
+            android:id="@+id/btn_timer"
+            style="@style/ButtonStyle"
+            android:text="Timer"/>
+
     </LinearLayout>
 
 </ScrollView>
