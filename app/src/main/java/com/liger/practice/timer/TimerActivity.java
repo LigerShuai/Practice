@@ -44,7 +44,7 @@ public class TimerActivity extends BaseActivity {
             }
 
             @Override
-            public void comleted() {
+            public void completed() {
                 TimerManager.postToMainThreadDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -65,7 +65,7 @@ public class TimerActivity extends BaseActivity {
                                             }
 
                                             @Override
-                                            public void comleted() {
+                                            public void completed() {
                                                 TimerManager.postToMainThreadDelayed(new Runnable() {
                                                     @Override
                                                     public void run() {
@@ -102,7 +102,7 @@ public class TimerActivity extends BaseActivity {
 
     private void showTts(String text, OnTtsListener onTtsListener) {
         mTts.setText(text);
-        onTtsListener.comleted();
+        onTtsListener.completed();
     }
 
     private void hideDescription() {

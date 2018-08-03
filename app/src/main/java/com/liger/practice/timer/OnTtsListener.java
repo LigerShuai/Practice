@@ -8,5 +8,5 @@ public interface OnTtsListener {
 
     void begin();
 
-    void comleted();
+    void completed();
 }

@@ -9,5 +9,6 @@ package com.liger.practice.constant;
 public class RouterConstant {
 
     public static final String DB_ACTIVITY = "/app/DbActivity";
-    public static final String TIMER_ACTIVITY = "/app/TimerActivity";
+    public static final String TIMER_ACTIVITY = "/app/TimerActivity2";
+    public static final String RX_ACTIVITY = "/app/RxActivity";
 }
