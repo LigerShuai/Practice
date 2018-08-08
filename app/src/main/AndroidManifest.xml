@@ -31,6 +31,7 @@
         <activity android:name=".timer.TimerActivity2" />
         <activity android:name=".anim.AnimActivity"/>
         <activity android:name=".floatwindow.FloatActivity"/>
+        <activity android:name=".floatwindow.FloatActivity2"/>
 
         <service android:name=".floatwindow.FloatWindowService"/>
     </application>

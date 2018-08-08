@@ -16,10 +16,9 @@ import com.liger.practice.aidlpractice.AIDLActivity;
 import com.liger.practice.base.BaseActivity;
 import com.liger.practice.constant.RouterConstant;
 import com.liger.practice.floatwindow.FloatActivity;
-import com.liger.practice.floatwindow.FloatWindowService;
+import com.liger.practice.floatwindow.FloatActivity2;
 import com.liger.practice.greendao.GreenDaoHelper;
 import com.liger.practice.greendao.User;
-import com.liger.practice.timer.TimerActivity;
 import com.liger.practice.util.AppUtil;
 import com.liger.practice.view.DynamicViewActivity;
 
@@ -46,6 +45,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_aidl).setOnClickListener(this);
         findViewById(R.id.btn_dynamic_view).setOnClickListener(this);
         findViewById(R.id.btn_float_view).setOnClickListener(this);
+        findViewById(R.id.btn_float_view2).setOnClickListener(this);
         findViewById(R.id.btn_ad_view).setOnClickListener(this);
         findViewById(R.id.btn_launch).setOnClickListener(this);
         findViewById(R.id.btn_db).setOnClickListener(this);
@@ -85,6 +85,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.btn_float_view:
                 floatIntent = new Intent(this, FloatActivity.class);
                 askForPermission();
+                break;
+            case R.id.btn_float_view2:
+                startActivity(new Intent(this, FloatActivity2.class));
                 break;
             case R.id.btn_ad_view:
                 startActivity(new Intent(this, AdViewActivity.class));
