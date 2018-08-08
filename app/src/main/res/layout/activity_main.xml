@@ -69,6 +69,11 @@
             style="@style/ButtonStyle"
             android:text="Anim"/>
 
+        <Button
+            android:id="@+id/btn_child_view"
+            style="@style/ButtonStyle"
+            android:text="ChildView"/>
+
     </LinearLayout>
 
 </ScrollView>
