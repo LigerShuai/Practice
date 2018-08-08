@@ -43,6 +43,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_db).setOnClickListener(this);
         findViewById(R.id.btn_timer).setOnClickListener(this);
         findViewById(R.id.btn_rx).setOnClickListener(this);
+        findViewById(R.id.btn_anim).setOnClickListener(this);
     }
 
     @Override
@@ -91,6 +92,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.btn_rx:
                 ARouter.getInstance().build(RouterConstant.RX_ACTIVITY).navigation();
+                break;
+            case R.id.btn_anim:
+                ARouter.getInstance().build(RouterConstant.ANIM_ACTIVITY).navigation();
                 break;
             default:
                 break;
