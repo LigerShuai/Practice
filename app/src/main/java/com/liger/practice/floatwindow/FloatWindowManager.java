@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.graphics.PixelFormat;
+import android.os.Build;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -24,6 +26,7 @@ public class FloatWindowManager {
     private static WindowManager.LayoutParams mParams;
 
     private static ActivityManager sActivityManager;
+    private static boolean isCreate;
 
     /**
      * 悬浮窗
@@ -35,11 +38,18 @@ public class FloatWindowManager {
      */
     @SuppressLint("ClickableViewAccessibility")
     public static void createFloatView(Context context) {
+        if (isCreate) {
+            return;
+        }
         final WindowManager manager = getWindowManager(context);
         mParams = new WindowManager.LayoutParams();
 
         //设置窗口类型，系统提示型窗口，显示在应用程序之上
-        mParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+        } else {
+            mParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+        }
         //设置为背景透明
         mParams.format = PixelFormat.RGBA_8888;
         //设置为不可聚焦
@@ -62,6 +72,8 @@ public class FloatWindowManager {
             }
         });
         manager.addView(mFloatView, mParams);
+        isCreate = true;
+        Log.d("shuai", "createFloatView: ");
     }
 
     public static void removeFloatView(Context context) {
@@ -70,6 +82,7 @@ public class FloatWindowManager {
             manager.removeView(mFloatView);
             mFloatView = null;
         }
+        isCreate = false;
     }
 
     /**

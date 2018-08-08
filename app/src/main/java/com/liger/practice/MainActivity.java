@@ -1,16 +1,21 @@
 package com.liger.practice;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.liger.practice.adview.AdViewActivity;
 import com.liger.practice.aidlpractice.AIDLActivity;
 import com.liger.practice.base.BaseActivity;
 import com.liger.practice.constant.RouterConstant;
+import com.liger.practice.floatwindow.FloatActivity;
 import com.liger.practice.floatwindow.FloatWindowService;
 import com.liger.practice.greendao.GreenDaoHelper;
 import com.liger.practice.greendao.User;
@@ -23,6 +28,9 @@ import com.liger.practice.view.DynamicViewActivity;
  * @date 2018/5/29 0029.
  */
 public class MainActivity extends BaseActivity implements View.OnClickListener {
+
+    public static int OVERLAY_PERMISSION_REQ_CODE = 1234;
+    private Intent floatIntent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,7 +83,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(new Intent(this, DynamicViewActivity.class));
                 break;
             case R.id.btn_float_view:
-                startService(new Intent(this, FloatWindowService.class));
+                floatIntent = new Intent(this, FloatActivity.class);
+                askForPermission();
                 break;
             case R.id.btn_ad_view:
                 startActivity(new Intent(this, AdViewActivity.class));
@@ -110,4 +119,37 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         GreenDaoHelper.getInstance().save(user3);
         Log.d("shuai", "saveData: " + user1.getName() + "\n" + user2.getName() + "\n" + user3.getName());
     }
+
+    /**
+     * 请求用户给予悬浮窗的权限
+     */
+    public void askForPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(this)) {
+                Toast.makeText(this, "当前无权限，请授权！", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:" + getPackageName()));
+                startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
+            } else {
+                startActivity(floatIntent);
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == OVERLAY_PERMISSION_REQ_CODE) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (!Settings.canDrawOverlays(this)) {
+                    Toast.makeText(this, "权限授予失败，无法开启悬浮窗", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "权限授予成功！", Toast.LENGTH_SHORT).show();
+                    //启动FxService
+                    startActivity(floatIntent);
+                }
+            }
+        }
+    }
 }
+

@@ -2,7 +2,9 @@ package com.liger.practice.floatwindow;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Build;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 
 /**
