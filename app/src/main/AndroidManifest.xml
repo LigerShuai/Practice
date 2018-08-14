@@ -33,6 +33,7 @@
         <activity android:name=".floatwindow.FloatActivity"/>
         <activity android:name=".floatwindow.FloatActivity2"/>
         <activity android:name=".anim.ChildViewActivity"/>
+        <activity android:name=".view.ConstraintActivity"/>
 
         <service android:name=".floatwindow.FloatWindowService"/>
     </application>

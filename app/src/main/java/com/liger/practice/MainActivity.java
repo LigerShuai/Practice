@@ -20,6 +20,7 @@ import com.liger.practice.floatwindow.FloatActivity2;
 import com.liger.practice.greendao.GreenDaoHelper;
 import com.liger.practice.greendao.User;
 import com.liger.practice.util.AppUtil;
+import com.liger.practice.view.ConstraintActivity;
 import com.liger.practice.view.DynamicViewActivity;
 
 /**
@@ -53,6 +54,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_rx).setOnClickListener(this);
         findViewById(R.id.btn_anim).setOnClickListener(this);
         findViewById(R.id.btn_child_view).setOnClickListener(this);
+        findViewById(R.id.btn_constraint).setOnClickListener(this);
     }
 
     @Override
@@ -111,6 +113,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.btn_child_view:
                 ARouter.getInstance().build(RouterConstant.CHILD_VIEW_ACTIVITY).navigation();
+                break;
+            case R.id.btn_constraint:
+                startActivity(new Intent(this, ConstraintActivity.class));
                 break;
             default:
                 break;

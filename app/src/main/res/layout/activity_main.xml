@@ -74,6 +74,11 @@
             style="@style/ButtonStyle"
             android:text="ChildView"/>
 
+        <Button
+            android:id="@+id/btn_constraint"
+            style="@style/ButtonStyle"
+            android:text="Constraint"/>
+
     </LinearLayout>
 
 </ScrollView>
