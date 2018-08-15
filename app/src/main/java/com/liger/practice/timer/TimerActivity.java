@@ -13,7 +13,7 @@ import com.liger.practice.constant.RouterConstant;
  * @author Liger
  * @date 2018/8/2 23:32
  */
-@Route(path = RouterConstant.TIMER_ACTIVITY)
+//@Route(path = RouterConstant.TIMER_ACTIVITY)
 public class TimerActivity extends BaseActivity {
 
     private TextView mTts;

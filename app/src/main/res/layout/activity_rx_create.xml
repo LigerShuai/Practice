@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/activity_rx_create_btn"
+            style="@style/ButtonStyle"
+            android:text="create"/>
+
+        <Button
+            android:id="@+id/just_btn"
+            style="@style/ButtonStyle"
+            android:text="just"/>
+
+        <Button
+            android:id="@+id/fromArray_btn"
+            style="@style/ButtonStyle"
+            android:text="fromArray"/>
+
+        <Button
+            android:id="@+id/fromCallable_btn"
+            style="@style/ButtonStyle"
+            android:text="fromCallable"/>
+
+        <Button
+            android:id="@+id/fromFuture_btn"
+            style="@style/ButtonStyle"
+            android:text="fromFuture"/>
+
+        <Button
+            android:id="@+id/fromIterable_btn"
+            style="@style/ButtonStyle"
+            android:text="fromIterable"/>
+
+        <Button
+            android:id="@+id/defer_btn"
+            style="@style/ButtonStyle"
+            android:text="defer"/>
+
+        <Button
+            android:id="@+id/timer_btn"
+            style="@style/ButtonStyle"
+            android:text="timer"/>
+
+        <Button
+            android:id="@+id/interval_btn"
+            style="@style/ButtonStyle"
+            android:text="interval"/>
+
+        <Button
+            android:id="@+id/intervalRange_btn"
+            style="@style/ButtonStyle"
+            android:text="intervalRange"/>
+
+        <Button
+            android:id="@+id/range_btn"
+            style="@style/ButtonStyle"
+            android:text="range"/>
+
+        <Button
+            android:id="@+id/rangeLong_btn"
+            style="@style/ButtonStyle"
+            android:text="rangeLong"/>
+
+        <Button
+            android:id="@+id/empty_btn"
+            style="@style/ButtonStyle"
+            android:text="empty"/>
+
+        <Button
+            android:id="@+id/never_btn"
+            style="@style/ButtonStyle"
+            android:text="never"/>
+
+        <Button
+            android:id="@+id/error_btn"
+            style="@style/ButtonStyle"
+            android:text="error"/>
+
+    </LinearLayout>
+
+</ScrollView>

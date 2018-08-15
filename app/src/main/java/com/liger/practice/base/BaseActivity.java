@@ -11,6 +11,16 @@ import android.view.Window;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+    protected String TAG = "----";
+    private static final int STACK_TRACE_DEEP = 4;
+
+    private void getTag() {
+        StackTraceElement[] traces = Thread.currentThread().getStackTrace();  // 最核心的方法
+        String clsName = traces[STACK_TRACE_DEEP].getFileName();
+        String methodName = traces[STACK_TRACE_DEEP].getMethodName();
+        TAG = clsName + " " + methodName + ": ";
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,5 +28,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         /*if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }*/
+        getTag();
     }
 }

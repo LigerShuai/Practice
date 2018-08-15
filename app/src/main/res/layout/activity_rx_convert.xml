@@ -10,34 +10,39 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/create_btn"
+            android:id="@+id/map_btn"
             style="@style/ButtonStyle"
-            android:text="创建操作符"/>
+            android:text="map"/>
 
         <Button
-            android:id="@+id/convert_btn"
+            android:id="@+id/flatMap_btn"
             style="@style/ButtonStyle"
-            android:text="转换操作符"/>
+            android:text="flatMap"/>
 
         <Button
-            android:id="@+id/combine_btn"
+            android:id="@+id/concatMap_btn"
             style="@style/ButtonStyle"
-            android:text="组合操作符"/>
+            android:text="concatMap"/>
 
         <Button
-            android:id="@+id/function_btn"
+            android:id="@+id/buffer_btn"
             style="@style/ButtonStyle"
-            android:text="功能操作符"/>
+            android:text="buffer"/>
 
         <Button
-            android:id="@+id/filter_btn"
+            android:id="@+id/groupBy_btn"
             style="@style/ButtonStyle"
-            android:text="过滤操作符"/>
+            android:text="groupBy"/>
 
         <Button
-            android:id="@+id/condition_btn"
+            android:id="@+id/scan_btn"
             style="@style/ButtonStyle"
-            android:text="条件操作符"/>
+            android:text="scan"/>
+
+        <Button
+            android:id="@+id/window_btn"
+            style="@style/ButtonStyle"
+            android:text="window"/>
 
     </LinearLayout>
 
