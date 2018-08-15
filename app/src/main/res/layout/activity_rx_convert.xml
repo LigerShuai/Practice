@@ -15,6 +15,11 @@
             android:text="map"/>
 
         <Button
+            android:id="@+id/map_btn2"
+            style="@style/ButtonStyle"
+            android:text="map2"/>
+
+        <Button
             android:id="@+id/flatMap_btn"
             style="@style/ButtonStyle"
             android:text="flatMap"/>
