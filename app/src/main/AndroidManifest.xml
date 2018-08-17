@@ -36,6 +36,8 @@
         <activity android:name=".view.ConstraintActivity"/>
         <activity android:name=".rx.RxCreateActivity"/>
         <activity android:name=".rx.RxConvertActivity"/>
+        <activity android:name=".rx.RxCombineActivity"/>
+        <activity android:name=".rx.RxFunctionActivity"/>
 
         <service android:name=".floatwindow.FloatWindowService"/>
     </application>

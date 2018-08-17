@@ -82,12 +82,12 @@ public class RxActivity extends BaseActivity {
 
     @OnClick(R.id.combine_btn)
     void combine() {
-//        startActivity(new Intent(this, RxCreateActivity.class));
+        startActivity(new Intent(this, RxCombineActivity.class));
     }
 
     @OnClick(R.id.function_btn)
     void function() {
-//        startActivity(new Intent(this, RxCreateActivity.class));
+        startActivity(new Intent(this, RxFunctionActivity.class));
     }
 
     @OnClick(R.id.filter_btn)
