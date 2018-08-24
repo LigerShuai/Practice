@@ -38,6 +38,7 @@
         <activity android:name=".rx.RxConvertActivity"/>
         <activity android:name=".rx.RxCombineActivity"/>
         <activity android:name=".rx.RxFunctionActivity"/>
+        <activity android:name=".RegexActivity"/>
 
         <service android:name=".floatwindow.FloatWindowService"/>
     </application>
