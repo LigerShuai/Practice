@@ -114,8 +114,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.btn_child_view:
                 ARouter.getInstance().build(RouterConstant.CHILD_VIEW_ACTIVITY).navigation();
                 break;
+//            case R.id.btn_constraint:
+//                startActivity(new Intent(this, ConstraintActivity.class));
+//                break;
             case R.id.btn_constraint:
-                startActivity(new Intent(this, ConstraintActivity.class));
+                startActivity(new Intent(this, RegexActivity.class));
                 break;
             default:
                 break;
