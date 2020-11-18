@@ -42,7 +42,7 @@
         <Button
             android:id="@+id/doOnSubscribe_btn"
             style="@style/ButtonStyle"
-            android:text="doOnSubscribe"/>
+            android:text="do"/>
 
         <Button
             android:id="@+id/doOnDispose_btn"

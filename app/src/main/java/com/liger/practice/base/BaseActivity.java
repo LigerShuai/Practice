@@ -18,7 +18,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         StackTraceElement[] traces = Thread.currentThread().getStackTrace();  // 最核心的方法
         String clsName = traces[STACK_TRACE_DEEP].getFileName();
         String methodName = traces[STACK_TRACE_DEEP].getMethodName();
-        TAG = clsName + " " + methodName;
+        TAG = clsName + " " + methodName + " " + TAG;
     }
 
     @Override

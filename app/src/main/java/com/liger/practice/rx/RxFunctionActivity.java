@@ -1,6 +1,7 @@
 package com.liger.practice.rx;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -70,7 +71,7 @@ public class RxFunctionActivity extends BaseActivity {
 
     @OnClick(R.id.doOnSubscribe_btn)
     void doOnSubscribeClick() {
-        doOnSubscribeOperator();
+        doOperator();
     }
 
     @OnClick(R.id.doOnDispose_btn)
@@ -341,9 +342,97 @@ public class RxFunctionActivity extends BaseActivity {
     }
 
     /**
-     * Observable 发送 onSubscribe() 之前会回调这个方法。
+     * do 操作符
      */
-    private void doOnSubscribeOperator() {
+    private void doOperator() {
+        Observable
+                .create(new ObservableOnSubscribe<Integer>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<Integer> e) throws Exception {
+                        e.onNext(1);
+                        e.onNext(2);
+                        e.onNext(3);
+                        e.onError(new Throwable("发生错误了"));
+                    }
+                })
+                // 1. 当Observable每发送1次数据事件就会调用1次
+                .doOnEach(new Consumer<Notification<Integer>>() {
+                    @Override
+                    public void accept(Notification<Integer> integerNotification) throws Exception {
+                        Log.d(TAG, "doOnEach: " + integerNotification.getValue());
+                    }
+                })
+                // 2. 执行Next事件前调用
+                .doOnNext(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        Log.d(TAG, "doOnNext: " + integer);
+                    }
+                })
+                // 3. 执行Next事件后调用
+                .doAfterNext(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        Log.d(TAG, "doAfterNext: " + integer);
+                    }
+                })
+                // 4. Observable正常发送事件完毕后调用
+                .doOnComplete(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        Log.e(TAG, "doOnComplete: ");
+                    }
+                })
+                // 5. Observable发送错误事件时调用
+                .doOnError(new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.d(TAG, "doOnError: " + throwable.getMessage());
+                    }
+                })
+                // 6. 观察者订阅时调用
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(@NonNull Disposable disposable) throws Exception {
+                        Log.e(TAG, "doOnSubscribe: ");
+                    }
+                })
+                // 7. 最后执行
+                .doFinally(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        Log.e(TAG, "doFinally: ");
+                    }
+                })
+                // 8. Observable发送事件完毕后调用，无论正常发送完毕 / 异常终止
+                .doAfterTerminate(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        Log.e(TAG, "doAfterTerminate: ");
+                    }
+                })
+                .subscribe(new Observer<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d(TAG, "onSubscribe: ");
+                    }
+
+                    @Override
+                    public void onNext(Integer value) {
+                        Log.d(TAG, "onNext 接收到了事件 " + value);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "onError 对Error事件作出响应");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "onComplete 对Complete事件作出响应");
+                    }
+                });
+
     }
 
     /**

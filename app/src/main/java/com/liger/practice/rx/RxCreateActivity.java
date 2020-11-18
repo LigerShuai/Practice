@@ -32,8 +32,6 @@ import io.reactivex.functions.Consumer;
  */
 public class RxCreateActivity extends BaseActivity {
 
-    private Integer deferInt = 100;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,6 +133,8 @@ public class RxCreateActivity extends BaseActivity {
                 emitter.onNext(3);
                 emitter.onComplete();
             }
+
+
         }).subscribe(new Observer<Integer>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -330,17 +330,25 @@ public class RxCreateActivity extends BaseActivity {
     }
 
     /**
-     * 直到被观察者被订阅后才会创建被观察者
+     * 直到有观察者（Observer）订阅时，才动态创建被观察者对象（Observable） & 发送事件
      */
+    //1、第一次对 i 赋值
+    private Integer i = 100;
+
     private void deferOperator() {
         Observable<Integer> observable = Observable.defer(new Callable<ObservableSource<? extends Integer>>() {
             @Override
             public ObservableSource<? extends Integer> call() throws Exception {
-                return Observable.just(deferInt);
+                Log.d(TAG, "call: ");
+                return Observable.just(i);
             }
         });
 
-        Observer observer = new Observer<Integer>() {
+        //2、第二次对 i 赋值
+        i = 200;
+
+        //3、此时，有观察者订阅 Observable，才会调用 defer 创建 Observable
+        observable.subscribe(new Observer<Integer>() {
             @Override
             public void onSubscribe(Disposable d) {
 
@@ -359,21 +367,17 @@ public class RxCreateActivity extends BaseActivity {
             @Override
             public void onComplete() {
                 Log.d(TAG, "deferOperator onComplete: ");
+
             }
-        };
-
-        deferInt = 200;
-        observable.subscribe(observer);
-
-        deferInt = 300;
-        observable.subscribe(observer);
+        });
     }
 
     /**
-     * 当到指定时间后就会发送一个 0L 的值给观察者
+     * 延迟指定时间后，发送1个数值0（Long类型）
      */
     private void timerOperator() {
-        Observable.timer(2, TimeUnit.SECONDS)
+        Observable
+                .timer(2, TimeUnit.SECONDS)
                 .subscribe(new Observer<Long>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -401,7 +405,8 @@ public class RxCreateActivity extends BaseActivity {
      * 每隔一段时间就会发送一个事件，这个事件是从0开始，不断增1的数字
      */
     private void intervalOperator() {
-        Observable.interval(0, 2, TimeUnit.SECONDS)
+        Observable
+                .interval(0, 2, TimeUnit.SECONDS)
                 .subscribe(new Observer<Long>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -454,7 +459,7 @@ public class RxCreateActivity extends BaseActivity {
     }
 
     /**
-     * 同时发送一定范围的事件序列
+     * 连续发送1个事件序列，可指定范围
      */
     private void rangeOperator() {
         Observable.range(2, 5)

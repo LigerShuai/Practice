@@ -14,6 +14,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observable;
+import io.reactivex.ObservableOperator;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -84,33 +85,35 @@ public class RxConvertActivity extends BaseActivity {
      * 将圆形事件转换为矩形事件
      */
     private void mapOperator() {
-        Observable.just(1, 2, 3)
+        Observable
+                .just(1, 2, 3)
                 .map(new Function<Integer, String>() {
                     @Override
                     public String apply(Integer integer) throws Exception {
                         return "将int转换为string: " + integer;
                     }
-                }).subscribe(new Observer<String>() {
-            @Override
-            public void onSubscribe(Disposable d) {
+                })
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
-            }
+                    }
 
-            @Override
-            public void onNext(String s) {
-                Log.d(TAG, "onNext: " + s);
-            }
+                    @Override
+                    public void onNext(String s) {
+                        Log.d(TAG, "onNext: " + s);
+                    }
 
-            @Override
-            public void onError(Throwable e) {
+                    @Override
+                    public void onError(Throwable e) {
 
-            }
+                    }
 
-            @Override
-            public void onComplete() {
-                Log.d(TAG, "onComplete: ");
-            }
-        });
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "onComplete: ");
+                    }
+                });
     }
 
     /**
@@ -139,6 +142,39 @@ public class RxConvertActivity extends BaseActivity {
                                 Log.d(TAG, "onNext action " + action);
                             }
                         }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    private void flatMapOperator0() {
+        final Person[] people = {};
+        Observable
+                .fromArray(people)
+                .flatMap(new Function<Person, ObservableSource<Plan>>() {
+                    @Override
+                    public ObservableSource<Plan> apply(Person person) throws Exception {
+                        return Observable.fromIterable(person.getPlanList());
+                    }
+                })
+                .subscribe(new Observer<Plan>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Plan plan) {
+                        Log.d(TAG, "onNext: " + plan.getContent());
                     }
 
                     @Override
@@ -245,7 +281,8 @@ public class RxConvertActivity extends BaseActivity {
      * 将数据按照除以3的余数进行分组
      */
     private void groupByOperator() {
-        Observable.just(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+        Observable
+                .just(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
                 .groupBy(new Function<Integer, Integer>() {
                     @Override
                     public Integer apply(Integer integer) throws Exception {
@@ -260,29 +297,28 @@ public class RxConvertActivity extends BaseActivity {
 
                     @Override
                     public void onNext(final GroupedObservable<Integer, Integer> integerIntegerGroupedObservable) {
-                        Log.d(TAG, "onNext: ");
-                        integerIntegerGroupedObservable.subscribe(new Observer<Integer>() {
-                            @Override
-                            public void onSubscribe(Disposable d) {
-                                Log.d(TAG, "GroupedObservable onSubscribe: ");
-                            }
+                        integerIntegerGroupedObservable
+                                .subscribe(new Observer<Integer>() {
+                                    @Override
+                                    public void onSubscribe(Disposable d) {
+                                    }
 
-                            @Override
-                            public void onNext(Integer integer) {
-                                Log.d(TAG, "GroupedObservable onNext groupName: " + integerIntegerGroupedObservable.getKey()
-                                        + " value: " + integer);
-                            }
+                                    @Override
+                                    public void onNext(Integer integer) {
+                                        Log.d(TAG, "GroupedObservable onNext groupName: " + integerIntegerGroupedObservable.getKey()
+                                                + " value: " + integer);
+                                    }
 
-                            @Override
-                            public void onError(Throwable e) {
+                                    @Override
+                                    public void onError(Throwable e) {
 
-                            }
+                                    }
 
-                            @Override
-                            public void onComplete() {
-                                Log.d(TAG, "GroupedObservable onComplete: ");
-                            }
-                        });
+                                    @Override
+                                    public void onComplete() {
+                                        Log.d(TAG, "GroupedObservable onComplete: ");
+                                    }
+                                });
                     }
 
                     @Override
