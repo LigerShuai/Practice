@@ -4,6 +4,7 @@
 
     <!-- 悬浮窗权限 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".BaseApp"
@@ -39,6 +40,7 @@
         <activity android:name=".rx.RxCombineActivity"/>
         <activity android:name=".rx.RxFunctionActivity"/>
         <activity android:name=".RegexActivity"/>
+        <activity android:name=".retrofit.RetrofitActivity"/>
 
         <service android:name=".floatwindow.FloatWindowService"/>
     </application>

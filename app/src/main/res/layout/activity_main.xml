@@ -79,6 +79,11 @@
             style="@style/ButtonStyle"
             android:text="Constraint"/>
 
+        <Button
+            android:id="@+id/btn_retrofit"
+            style="@style/ButtonStyle"
+            android:text="Retrofit"/>
+
     </LinearLayout>
 
 </ScrollView>
